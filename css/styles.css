@@ -1,3 +1,8 @@
+/* Make everything a border-box*/
+* {
+  box-sizing: border-box;
+}
+
 /* ====================== Typography ====================== */
 body,
 h1,
@@ -224,35 +229,54 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
+#restaurants-list-heading {
+  margin-bottom: 0;
+  margin-left: 2.5vw;
+}
+@media (max-width: 600px) {
+  #restaurants-list-heading {
+    margin-left: 5vw;
+  }
+}
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px;
+  padding: 0.5em 1em;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: stretch;
 }
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
-  margin: 15px;
-  min-height: 380px;
-  padding: 0 30px 25px;
+  margin: 1em 0;
+  min-height: 25.4em;
+  padding: 0 1.875em 1.5625em;
   text-align: left;
-  width: 270px;
+  width: 20.875em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
   margin: 0;
   max-width: 100%;
-  min-height: 248px;
+  min-height: 15.5em;
   min-width: 100%;
 }
 #restaurants-list li h3 {
   color: #f18200;
   font-weight: 200;
   letter-spacing: 0;
-  margin: 20px 0 10px;
+  margin: 1em 0 0.5em;
   text-transform: uppercase;
 }
 #restaurants-list p {
@@ -263,11 +287,19 @@ nav h1 a {
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
-  margin: 15px 0 0;
-  padding: 8px 30px 10px;
+  margin: 0.9375em 0 0;
+  padding: 0.5em 1.875em 0.5em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  #restaurants-list li a {
+    min-width: 48px;
+    min-height: 48px;
+  }
 }
 
 /* ====================== Restaurant Details ====================== */
