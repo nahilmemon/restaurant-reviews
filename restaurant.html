@@ -46,7 +46,17 @@
       <!-- Name -->
       <h1 id="restaurant-name"></h1>
       <!-- Image -->
-      <img id="restaurant-img">
+      <picture id="restaurant-picture">
+        <source
+          srcset=""
+          sizes="(min-width: 768px) calc(50vw - 5em),
+            (min-width: 600px) calc(85vw - 4em),
+            85vw">
+        <img
+          id="restaurant-img"
+          src=""
+          alt="">
+      </picture>
       <!-- Main cuisine -->
       <p id="restaurant-cuisine"></p>
       <!-- Address -->
