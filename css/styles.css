@@ -136,22 +136,6 @@ section {
   flex-wrap: wrap;
 }
 
-/*.inside #map-container {
-  order: 1;
-}*/
-
-.inside #restaurant-container {
-  order: 2;
-}
-
-.inside #reviews-container {
-  order: -1;
-}
-
-/*.inside footer {
-  order: 4;
-}*/
-
 /* ====================== Footer ====================== */
 #footer {
   background-color: #444;
