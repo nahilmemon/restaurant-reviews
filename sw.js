@@ -27,7 +27,10 @@ const URLS_TO_CACHE = [
   '/images-resized/7-400.jpg',
   '/images-resized/8-400.jpg',
   '/images-resized/9-400.jpg',
-  '/images-resized/10-400.jpg'
+  '/images-resized/10-400.jpg',
+  'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png',
+  'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
+  'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png'
 ];
 
 /**
@@ -49,6 +52,67 @@ self.addEventListener('install', function(event) {
       })
       .catch(function(error) {
         console.log('Install/cache adding failed: ', error)
+      })
+  );
+});
+
+/**
+ * Respond to a fetch event by first checking if the desired resource is already
+ * available in the cache. If not, then make a network request for this resource
+ * and add it to the cache afterwards.
+ */
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // If the desired resource is already saved in the cache, then
+        // return this resource from the cache
+        if (response) {
+          console.log('Found ', event.request.url, ' in cache');
+          return response;
+        }
+
+        // Otherwise, obtain this resource by fetching it from the network.
+        // To do this, the request needs to be cloned first, since the request
+        // is a stream which can only be consumed once. Since we are consuming this
+        // once by the cache and again by the browser to fetch now, we need
+        // to clone the request first.
+        else {
+          console.log('Could not find ', event.request.url, ' in cache. Fetching from network now.');
+
+          // Clone the request that needs to be fetched by the browser
+          const FETCH_REQUEST = event.request.clone();
+
+          return fetch(FETCH_REQUEST)
+            .then(function(response) {
+              // Check if the response received is valid
+              if(!response || response.status !== 200) { // || response.type !== 'basic') {
+                return response;
+              }
+
+              // The response also needs to be cloned since it is also a stream
+              // and because we want the browser to consume the response as well
+              // as the cache consuming the response. Thus two response streams
+              // are needed.
+              const RESPONSE_TO_CACHE = response.clone();
+              console.log(RESPONSE_TO_CACHE);
+
+              caches.open(CACHE_NAME)
+                .then(function(cache) {
+                  cache.put(event.request, RESPONSE_TO_CACHE);
+                  console.log('Succeeded to add', RESPONSE_TO_CACHE, 'to cache.')
+                })
+                .catch(function(error) {
+                  console.log('1. Failed to add ', RESPONSE_TO_CACHE, 'to cache because: ', error);
+                });
+
+              return response;
+            })
+            // Catch and log any errors if the above fails
+            .catch(function(error) {
+              console.log('2. Failed to add ', FETCH_REQUEST, 'to cache because: ', error);
+            });
+        }
       })
   );
 });
