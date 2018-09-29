@@ -6,7 +6,7 @@
 /**
  * URLs/files to cache
  */
-const CACHE_NAME = 'restaurant-reviews-cache-v2';
+const CACHE_NAME = 'restaurant-reviews-cache-v1';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
@@ -114,5 +114,24 @@ self.addEventListener('fetch', function(event) {
             });
         }
       })
+  );
+});
+
+/**
+ * When a new service worker has activated, delete all the previous cache versions.
+ */
+self.addEventListener('activate', function(event) {
+
+  const CAHCE_WHITELIST = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (CAHCE_WHITELIST.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
