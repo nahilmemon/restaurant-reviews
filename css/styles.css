@@ -461,3 +461,52 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+/* ====================== Update Notification ====================== */
+#update-site-notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000000;
+  background: #f18200;
+  text-align: center;
+}
+
+#update-site-notification p {
+  font-weight: 600;
+}
+
+#update-site-notification button {
+  margin: 1em 1em 1em 0;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 5%;
+  font-weight: 600;
+}
+
+@media (min-width: 375px) {
+  #update-site-notification {
+    text-align: left;
+  }
+
+  #update-site-notification p {
+    display: inline-block;
+    float: left;
+  }
+
+  #update-site-notification button {
+    float: right;
+  }
+}
+
+@media (max-width: 767px) {
+  #update-site-notification button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  #update-site-notification p {
+    padding: 0.6em 0 0.6em 1em;
+  }
+}

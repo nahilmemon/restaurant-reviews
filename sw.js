@@ -66,7 +66,7 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request)
       .then(function(response) {
         // If the desired resource is already saved in the cache, then
-        // return this resource from the cache
+        // return this resource from the cache.
         if (response) {
           console.log('Found ', event.request.url, ' in cache');
           return response;
@@ -121,7 +121,6 @@ self.addEventListener('fetch', function(event) {
  * When a new service worker has activated, delete all the previous cache versions.
  */
 self.addEventListener('activate', function(event) {
-
   const CAHCE_WHITELIST = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
@@ -134,4 +133,14 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+});
+
+/**
+ * When the service worker receives the 'skipWaiting' message,
+ * trigger the service worker to update and activate immediately.
+ */
+self.addEventListener('message', function(event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
