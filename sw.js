@@ -6,11 +6,12 @@
 /**
  * URLs/files to cache
  */
-const CACHE_NAME = 'restaurant-reviews-cache-v1';
+const CACHE_NAME = 'restaurant-reviews-cache-v2';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
   '/restaurant.html',
+  '/skeleton.html',
   '/css/styles.css',
   'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
   '/js/dbhelper.js',
@@ -79,6 +80,8 @@ self.addEventListener('fetch', function(event) {
         // to clone the request first.
         else {
           console.log('Could not find ', event.request.url, ' in cache. Fetching from network now.');
+          // Save the url of the event request
+          let requestUrl = new URL(event.request.url);
 
           // Clone the request that needs to be fetched by the browser
           const FETCH_REQUEST = event.request.clone();
@@ -111,6 +114,13 @@ self.addEventListener('fetch', function(event) {
             // Catch and log any errors if the above fails
             .catch(function(error) {
               console.log('2. Failed to add ', FETCH_REQUEST, 'to cache because: ', error);
+              // If the fetch failed to find a restaurant info page because the
+              // user is offline, then display a skeleton page instead
+              if (requestUrl.origin === location.origin) {
+                if (requestUrl.pathname.startsWith('/restaurant.html')) {
+                  return caches.match('/skeleton.html');
+                }
+              }
             });
         }
       })
@@ -142,5 +152,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('message', function(event) {
   if (event.data.action === 'skipWaiting') {
     self.skipWaiting();
+  } else {
+    console.log(event.data);
   }
 });

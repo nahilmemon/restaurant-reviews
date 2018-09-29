@@ -510,3 +510,21 @@ nav h1 a {
     padding: 0.6em 0 0.6em 1em;
   }
 }
+
+/* ====================== Errors ====================== */
+.skeleton #maincontent {
+  background: #fff;
+}
+
+#internet-error {
+  width: 85%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.error-symbol {
+  font-size: 6em;
+  text-align: center;
+  margin: 0.25em 0;
+  color: #f18200;
+}
