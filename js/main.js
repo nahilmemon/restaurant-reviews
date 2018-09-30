@@ -211,7 +211,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     }
     self.markers.push(marker);
   });
-
 }
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
@@ -223,3 +222,18 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+/**
+ * When the user presses enter on a map marker, redirect the page's url to
+ * one that gives more information regarding that specific restaurant.
+ */
+document.addEventListener('keyup', function(event) {
+  if (event.target.classList.contains('leaflet-marker-icon') && event.which === 13) {
+    for (const marker of self.markers) {
+      if (marker.options.title === event.target.title) {
+        window.location.href = marker.options.url;;
+        return;
+      }
+    }
+  }
+});
