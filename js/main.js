@@ -204,7 +204,7 @@ createRestaurantHTML = (restaurant) => {
 addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap, true);
     marker.on("click", onClick);
     function onClick() {
       window.location.href = marker.options.url;
