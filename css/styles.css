@@ -368,7 +368,7 @@ nav h1 a {
 
   .inside #map-container {
     background: blue none repeat scroll 0 0;
-    height: 100%;
+    height: calc(100% - 4vh - 2.5em*1.125);
     position: fixed;
     right: 0;
     bottom: 0;
@@ -394,6 +394,7 @@ nav h1 a {
 @media (min-width: 992px) {
   .inside #map-container {
     top: calc(4vh + 3em*1.05);
+    height: calc(100% - 4vh - 3em*1.05);
   }
 }
 
