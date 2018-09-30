@@ -103,6 +103,8 @@ a:hover,
 a:focus {
   color: #3397db;
   text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(51,151,219,1);
 }
 
 a img {
@@ -165,6 +167,13 @@ nav h1 a {
   text-transform: uppercase;
 }
 
+nav h1 a:focus,
+nav h1 a:hover {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(241,130,0,1);
+  color: #f18200;
+}
+
 @media (max-width: 600px) {
   nav h1 a {
     letter-spacing: 5px;
@@ -203,10 +212,12 @@ nav h1 a {
   text-decoration: none;
 }
 
-/* Add a color on mouse-over */
+
+#breadcrumb li a:focus,
 #breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
+  outline: 0;
+  box-shadow: 0 0 0 1px rgba(241,130,0,1);
+  color: #f18200;
 }
 
 /* ====================== Map ====================== */
@@ -214,6 +225,32 @@ nav h1 a {
   height: 33.3333em;
   width: 100%;
   background-color: #ccc;
+}
+
+#map:focus {
+  border: 0.3em solid #f18200;
+}
+
+.leaflet-marker-icon:focus,
+.leaflet-marker-icon:hover {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(241,130,0,1);
+}
+
+.leaflet-control-zoom-in:focus,
+.leaflet-control-zoom-out:focus,
+.leaflet-control-attribution a:focus,
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover,
+.leaflet-control-attribution a:hover {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(241,130,0,1);
+  color: #f18200;
+}
+
+.leaflet-control-attribution a:focus,
+.leaflet-control-attribution a:hover {
+  box-shadow: 0 0 0 1px rgba(241,130,0,1);
 }
 
 /* ====================== Restaurant Filtering ====================== */
@@ -243,6 +280,16 @@ nav h1 a {
   margin: 2.5vw 2.5vw 2.5vw 0;
   padding: 0.75em;
   width: 200px;
+}
+
+.filter-options select:focus,
+.filter-options select:hover {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(241,130,0,1);
+}
+
+.filter-options select:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
@@ -322,6 +369,14 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
   width: 100%;
+}
+
+#restaurants-list li a:hover,
+#restaurants-list li a:focus {
+  background-color: #fff;
+  color: #f18200;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(241,130,0,1);
 }
 
 @media (max-width: 767px) {
