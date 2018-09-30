@@ -89,7 +89,8 @@ self.addEventListener('fetch', function(event) {
           return fetch(FETCH_REQUEST)
             .then(function(response) {
               // Check if the response received is valid
-              if(!response || response.status !== 200) { // || response.type !== 'basic') {
+              if(!response) {
+                console.log('Error: response is not valid.');
                 return response;
               }
 
