@@ -38,19 +38,23 @@
     <section id="map-container">
       <!-- Map -->
       <map id="map" tabindex="0" aria-label="Map showing the locations of all the restaurants resulting from the filters applied in the section below."></map>
+    </section>
 
-      <!-- Map filtering options -->
-      <div id="map-filters" class="filter-options">
+    <!-- Map filtering options -->
+    <section>
+      <form id="map-filters" class="filter-options">
         <h2>Filter Results</h2>
         <!-- Filter neighborhood dropdown -->
+        <label for="neighborhoods-select" class="filter-label" id="neighborhoods-select-label">Filter by neighborhood:</label>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
         <!-- Fitler cuisine dropdown -->
+        <label for="cuisines-select" class="filter-label" id="cuisines-select-label">Filter by cuisine:</label>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
-      </div>
+      </form>
     </section>
 
     <!-- Restaurants' information section -->
