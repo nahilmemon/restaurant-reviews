@@ -242,6 +242,8 @@ nav h1 a:hover {
   height: 33.3333em;
   width: 100%;
   background-color: #ccc;
+  margin: 0;
+  display: block;
 }
 
 #map:focus {

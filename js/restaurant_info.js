@@ -30,7 +30,8 @@ initMap = () => {
         id: 'mapbox.streets'
       }).addTo(newMap);
       fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap, false);
+      labelMapWithARIA();
+      DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap, true);
     }
   });
 }
@@ -179,6 +180,14 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
   breadcrumb.appendChild(li);
+}
+
+/**
+ * Add aria-label to the map with an appropriate description.
+ */
+labelMapWithARIA = (restaurant=self.restaurant) => {
+  const mapFigure = document.getElementById('map');
+  mapFigure.setAttribute('aria-label', `Map showing location of ${restaurant.name} restaurant.`);
 }
 
 /**
