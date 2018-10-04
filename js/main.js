@@ -157,6 +157,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.setAttribute('aria-role', 'article');
 
   const divTop = document.createElement('div');
   divTop.className = 'restaurant-overview';
@@ -191,6 +192,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('aria-label', `View details regarding ${restaurant.name} restaurant`);
   divBot.append(more);
 
   li.append(divTop);
