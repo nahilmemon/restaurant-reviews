@@ -212,6 +212,12 @@ section {
   text-decoration: none;
 }
 
+@media (max-width: 767px) {
+  #breadcrumb li a {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+}
 
 #breadcrumb li a:focus,
 #breadcrumb li a:hover {
@@ -607,14 +613,14 @@ section {
 }
 
 #update-site-notification button {
-  margin: 1em 1em 1em 0;
+  margin: 1em 1em 1em 1em;
   background: #fff;
   border: 2px solid #fff;
   border-radius: 5%;
   font-weight: 600;
 }
 
-@media (min-width: 375px) {
+@media (min-width: 400px) {
   #update-site-notification {
     text-align: left;
   }
