@@ -414,9 +414,13 @@ section {
 }
 
 /* ====================== Restaurant Listing ====================== */
+#filter-results {
+  background-color: #f3f3f3;
+}
+
 #restaurants-list-heading {
-  margin-bottom: 0;
-  margin-left: 2.5vw;
+  margin: 0 2.5vw;
+  padding-top: 2.5vw;
   color: #744906;
 }
 
@@ -427,7 +431,6 @@ section {
 }
 
 #restaurants-list {
-  background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
   padding: 0.5em 1em;
@@ -678,6 +681,7 @@ section {
 #update-site-notification p {
   font-weight: 600;
   color: #fff;
+  margin: 1.25em;
 }
 
 #update-site-notification button {
@@ -687,6 +691,7 @@ section {
   border: none;
   border-bottom: 3px solid #bdc3c7;
   font-weight: 600;
+  padding: 8px;
 }
 
 @media (min-width: 400px) {
