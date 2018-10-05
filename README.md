@@ -1,32 +1,63 @@
-# Mobile Web Specialist Certification Course
----
-#### _Three Stage Course Material Project - Restaurant Reviews_
+# Restaurant Reviews Enhancement
 
-## Project Overview: Stage 1
+## Table of Contents
 
-For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
+* [Description](#description)
+* [How to Run the Web App](#how-to-run-the-web-app)
+* [Minimum Requirements](#minimum-requirements)
+* [Extra Features](#extra-features)
+* [Resources Used](#resources-used)
 
-### Specification
+## Description
 
-You have been provided the code for a restaurant reviews website. The code has a lot of issues. It’s barely usable on a desktop browser, much less a mobile device. It also doesn’t include any standard accessibility features, and it doesn’t work offline at all. Your job is to update the code to resolve these issues while still maintaining the included functionality. 
+[An unresponsive and inaccessibly designed website feature reviews of various restaurants in New York City](https://github.com/udacity/mws-restaurant-stage-1) was given. In this project, I tackled the static webpages given and improved them to become responsive on various display sizes, become much more accessible to screen reader users and users with lower visual acuity, and begin becoming a progressive web application by caching the site’s assets for offline use using a service worker.
 
-### What do I do from here?
+## How to Run the Web App
 
-1. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer. 
+1. Download the repository.
+2. Open a command prompt terminal and cd (change into the directory) where the repository has been saved.
+3. Install all the needed npm dependencies using the following command:
+    * `npm install`
+    * Note: node.js can be downloaded [here](https://nodejs.org/en/download/) and npm can subsequently be installed using the instructions found [here](https://www.npmjs.com/get-npm)
+4. Set up a simple HTTP server. If you have python installed, this can be run using the following command:
+    * Python 2.x: `python -m SimpleHTTPServer 8000`
+    * Python 3.x: `py -3 -m http.server 8000`
+    * Note: to check which version of python you have installed, run: python -v
+    * Note: python can be downloaded [here](https://www.python.org/)
+5. While the server is running in the background, browse the website at: [http://localhost:8000](http://localhost:8000)
 
-In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
+## Minimum Requirements
 
-2. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
-3. Explore the provided code, and start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
-4. Write code to implement the updates to get this site on its way to being a mobile-ready website.
+The minimum requirements of this project involved updating the code to fix the following problems while maintaining the already included functionality of the site:
+* Make the website responsive:
+  * Ensure the website’s content is always visible and displays nicely on various sized devices including desktop, tablet, and mobile devices.
+  * Make the images responsive in terms of size of the image vs. size of the viewport without overlapping or intruding upon other elements on the page.
+  * Make sure that all application elements are visible and usable on all viewport sizes.
+* Make the website accessible:
+  * Ensure that all content-related images come with suitable alternate text which properly describes the contents of these images.
+  * Manage focus appropriately so that users can easily and noticeably tab through all the important elements on the webpage.
+  * Ensure that focus is only trapped where necessary and is otherwise escapable.
+  * Ensure that semantic elements are used wherever appropriate.
+  * Use ARIA roles for those elements that do not have a proper semantic element to define themselves.
+* Make the website available offline:
+  * In browsers that support service workers, register and make use of a service worker to cache the responses returned from the requests made for the site’s assets so that when there is no network access, the user can view any previously visited pages easily while offline.
 
-## Leaflet.js and Mapbox:
+## Extra Features
 
-This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information. 
+Extra features that were added to the web app included:
+* Reorganize, comment, and clean up HTML and CSS files.
+* Implement a flexbox grid where applicable.
+* Use the picture element with a srcset and sizes attributes for each image so that the resolution of the image uploaded is dependent upon the device pixel ratio of the user’s device and the current viewport size in order to load images at a faster rate.
+* Implement grunt to easily create a new folder of all source images copied and resized to particular resolutions using the command prompt terminal.
+* Enable keyboard interactivity for the map markers.
+* Add a skip link for keyboard who are tabbing through the page. The skip link enables users to skip the header and map sections and tab directly to the map filtering section.
+* Add detailed headings where appropriate to act as landmarks for screen reader users.
+* Changing the color palette so that the text/background color combinations meet Web Content Accessibility Guidelines (WCAG) Criterion 1.4.6 so that users with lower visual acuity may still be able to read the content on the website.
+* Create and display a notification on the homepage when the service worker updates so that the user can just click the refresh button to update the service worker and reload the page or click the dismiss button to hide the notification.
+* Cache a skeleton HTML page so that if the user tries to visit a not previously visited page while offline, he/she will be presented with a webpage that show’s the site’s header, footer and a custom error message.
 
-### Note about ES6
+## Resources Used
 
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
-
-
-
+* [Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/ )
+* [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+* [Accessible Rich Internet Applications (WAI-ARIA) 1.1](https://www.w3.org/TR/wai-aria-1.1/)
