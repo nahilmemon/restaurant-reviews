@@ -132,7 +132,8 @@ function createUpdateNotificationHTML() {
 
   updateSection.append(updateDiv);
 
-  document.body.append(updateSection);
+  let firstDOMElement = document.querySelector('.skip-link');
+  document.body.insertBefore(updateSection, firstDOMElement);
 }
 
 /**
